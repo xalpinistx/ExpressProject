@@ -18,7 +18,7 @@ namespace ExpressProject.Api
 
             config.Routes.MapHttpRoute(
                     name: "UserApi",
-                    routeTemplate: "user/"
+                    routeTemplate: "user"
                 );
 
             config.Routes.MapHttpRoute(

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressProject.Model", "Exp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressProject.Repository", "ExpressProject.Repository\ExpressProject.Repository.csproj", "{224931C9-08F7-43DD-A4A3-9C15C013A097}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressProject.TMDBWrapper", "ExpressProject.TMDBWrapper\ExpressProject.TMDBWrapper.csproj", "{0323389E-13FB-411A-8C50-AC0C8ED98E06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{224931C9-08F7-43DD-A4A3-9C15C013A097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224931C9-08F7-43DD-A4A3-9C15C013A097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224931C9-08F7-43DD-A4A3-9C15C013A097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0323389E-13FB-411A-8C50-AC0C8ED98E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0323389E-13FB-411A-8C50-AC0C8ED98E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0323389E-13FB-411A-8C50-AC0C8ED98E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0323389E-13FB-411A-8C50-AC0C8ED98E06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

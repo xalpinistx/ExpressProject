@@ -1,5 +1,5 @@
-﻿using ExpressProject.Api.Models;
-using ExpressProject.Service;
+﻿using ExpressProject.Service;
+using ExpressProject.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +31,7 @@ namespace ExpressProject.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetAllUsers()
         {
+
             var users = _userService.GetUsers();
 
             if (users != null)
@@ -43,17 +44,15 @@ namespace ExpressProject.Api.Controllers
 
         [Route("get")]
         [HttpGet]
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get()
         {
-
-
             return new HttpResponseMessage()
             {
                 Content = new StringContent("Get:test!")
             };
         }
 
-        public HttpResponseMessage Post(UserViewModel user)
+        public HttpResponseMessage Post()
         {
             return new HttpResponseMessage()
             {
@@ -62,7 +61,7 @@ namespace ExpressProject.Api.Controllers
         }
 
 
-        public HttpResponseMessage Put(UserViewModel user)
+        public HttpResponseMessage Put()
         {
             return new HttpResponseMessage()
             {
@@ -70,12 +69,6 @@ namespace ExpressProject.Api.Controllers
             };
         }
 
-        public HttpResponseMessage Delete(UserViewModel user)
-        {
-            return new HttpResponseMessage()
-            {
-                Content = new StringContent("Delete:test!")
-            };
-        }
+
     }
 }

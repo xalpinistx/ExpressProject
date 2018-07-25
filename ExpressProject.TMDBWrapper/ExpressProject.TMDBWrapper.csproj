@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6F906B6-56C4-424B-8976-6D220374B938}</ProjectGuid>
+    <ProjectGuid>{0323389E-13FB-411A-8C50-AC0C8ED98E06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExpressProject.Service</RootNamespace>
-    <AssemblyName>ExpressProject.Service</AssemblyName>
+    <RootNamespace>ExpressProject.TMDBWrapper</RootNamespace>
+    <AssemblyName>ExpressProject.TMDBWrapper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,18 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,32 +44,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IMovieApiService.cs" />
-    <Compile Include="Interfaces\IMovieService.cs" />
-    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="ApiRequest\IsoDateTimeConverterEx.cs" />
+    <Compile Include="ApiResponse\ApiError.cs" />
+    <Compile Include="ApiRequest\ApiMovieRequest.cs" />
+    <Compile Include="ApiRequest\ApiRequestBase.cs" />
+    <Compile Include="ApiRequest\IApiRequest.cs" />
+    <Compile Include="ApiResponse\ApiQueryResponse.cs" />
+    <Compile Include="ApiResponse\ApiRateLimit.cs" />
+    <Compile Include="ApiResponse\ApiResponseBase.cs" />
+    <Compile Include="ApiResponse\ApiSearchResponse.cs" />
+    <Compile Include="ApiResponse\TmdbStatusCode.cs" />
+    <Compile Include="Configuration\ApiConfiguration.cs" />
+    <Compile Include="Configuration\ApiConfigurationRequest.cs" />
+    <Compile Include="Configuration\IApiConfigurationRequest.cs" />
+    <Compile Include="Configuration\ImageConfiguration.cs" />
+    <Compile Include="IMovieDbApi.cs" />
+    <Compile Include="IMovieDbSettings.cs" />
+    <Compile Include="ApiRequest\IApiMovieRequest.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieInfo.cs" />
+    <Compile Include="MovieDbFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\MovieApiService.cs" />
-    <Compile Include="Services\MovieService.cs" />
-    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Shims\ImportingConstructorAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExpressProject.Model\ExpressProject.Model.csproj">
-      <Project>{3EC2852D-ABD9-415F-9BFB-F59B3259D9A5}</Project>
-      <Name>ExpressProject.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExpressProject.Repository\ExpressProject.Repository.csproj">
-      <Project>{224931C9-08F7-43DD-A4A3-9C15C013A097}</Project>
-      <Name>ExpressProject.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExpressProject.TMDBWrapper\ExpressProject.TMDBWrapper.csproj">
-      <Project>{0323389e-13fb-411a-8c50-ac0c8ed98e06}</Project>
-      <Name>ExpressProject.TMDBWrapper</Name>
-    </ProjectReference>
+    <Folder Include="Interfaces\ApiIntrfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
