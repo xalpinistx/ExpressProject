@@ -8,6 +8,7 @@ namespace ExpressProject.Api.App_Start
     using ExpressProject.Repository.Interfaces;
     using ExpressProject.Repository.Repositories;
     using ExpressProject.Service;
+    using ExpressProject.Service.Interfaces;
     using ExpressProject.Service.Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -67,6 +68,7 @@ namespace ExpressProject.Api.App_Start
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IMovieService>().To<MovieService>();
+            kernel.Bind<IMovieApiService>().To<MovieApiService>();
         }
     }
 }

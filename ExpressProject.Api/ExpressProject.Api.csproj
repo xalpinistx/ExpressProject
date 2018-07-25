@@ -118,8 +118,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MovieViewModel.cs" />
-    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpressProject.Model\ExpressProject.Model.csproj">
@@ -146,6 +145,10 @@
     <ProjectReference Include="..\ExpressProject.Service\ExpressProject.Service.csproj">
       <Project>{B6F906B6-56C4-424B-8976-6D220374B938}</Project>
       <Name>ExpressProject.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExpressProject.TMDBWrapper\ExpressProject.TMDBWrapper.csproj">
+      <Project>{0323389E-13FB-411A-8C50-AC0C8ED98E06}</Project>
+      <Name>ExpressProject.TMDBWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
