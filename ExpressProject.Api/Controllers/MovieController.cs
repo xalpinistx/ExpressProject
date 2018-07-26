@@ -1,4 +1,6 @@
-﻿using ExpressProject.Service.Interfaces;
+﻿using ExpressProject.Api.Models;
+using ExpressProject.Service.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -23,6 +25,20 @@ namespace ExpressProject.Api.Controllers
             _movieApiService = movieApiService;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestPage">Number of current page</param>
+        /// 
+        /// <returns>Movie object JSON formated with fields: current page, total pages, 
+        /// total content, 20 top rated movies of the current page</returns>
+        ///
+        /// movie {
+        ///     
+        ///     
+        ///     
+        /// } 
+        ///
         [HttpGet]
         [Route("getTopRatedMovies")]
         public async Task<IHttpActionResult> GetTopRatedMovies(int requestPage = 1)
@@ -34,7 +50,14 @@ namespace ExpressProject.Api.Controllers
 
             if (movies != null)
             {
-                return Ok(movies.Json);
+                var result = new ViewModelTopRatedMovies()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalTopRatedMovies = movies.TotalResults
+                };
+                return Ok(result);
             }
 
             return NotFound();
