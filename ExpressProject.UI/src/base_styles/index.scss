@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@import "./node_modules/normalize-scss/sass/normalize";
+@import "base.scss";
+@import "components/Header/header.scss";
+@import "components/Movies/movie.scss";
+@import "components/Search/searchform.scss";
+@import "components/Login/login.scss";
+@import "constants.scss";
+@import "components/Footer/footer.scss";

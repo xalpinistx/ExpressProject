@@ -1,0 +1,10 @@
+@import "./base_styles/constants.scss";
+
+.moviecrew-footer {
+  @include flex-container;
+
+  background-color: $mc-gray;
+  align-items: center;
+  height: 7rem;
+
+}

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+@import "./base_styles/constants.scss";
+
+.login {
+  position: absolute;
+  right: -14rem;
+
+  &__button {
+    color: $mc-white;
+    background-color: $mc-light-green;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #862c99;
+      transition: all 0.8s;
+    }
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+    text-align: center;
+    display: block;
+    margin: 15% auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(0.9);
+    }
+    &:before,
+    &:after {
+      line-height: 0.5;
+    }
+    &:before {
+      content: "☰";
+      display: block;
+    }
+    &:after {
+      content: "&times;";
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: none;
+    }
+  }
+}

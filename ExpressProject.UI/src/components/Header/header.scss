@@ -1,0 +1,43 @@
+@import "./base_styles/constants.scss";
+
+.moviecrew-header {
+  @include flex-container;
+
+  justify-content: space-between;
+  background-color: $mc-gray;
+  align-items: center;
+  height: 7rem;
+  position: relative;
+
+  &__logo-wrapper {
+    margin: 0.75rem 0;
+  }
+
+  &__logo {
+    width: 10rem;
+  }
+
+  &__nav-tab {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  &__list-item {
+    margin-left: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    & a:hover {
+      border: none;
+      color: $mc-light-green;
+      padding: 0.25rem;
+      transition: ease 0.3s;
+      box-shadow: 2px 2px 6px 4px $mc-light-green;
+    }
+  }
+}

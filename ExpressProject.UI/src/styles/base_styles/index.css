@@ -1,0 +1,334 @@
+@charset "UTF-8";
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+* {
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  outline: none; }
+
+a {
+  color: #000; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 1rem;
+  background: #4f4f4f;
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100%;
+  height: auto; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.moviecrew-header {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+  background-color: #eee;
+  align-items: center;
+  height: 7rem;
+  position: relative; }
+  .moviecrew-header__logo-wrapper {
+    margin: 0.75rem 0; }
+  .moviecrew-header__logo {
+    width: 10rem; }
+  .moviecrew-header__nav-tab {
+    display: flex;
+    flex-flow: row wrap; }
+  .moviecrew-header__list {
+    display: flex;
+    flex-flow: row wrap; }
+  .moviecrew-header__list-item {
+    margin-left: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: bold; }
+    .moviecrew-header__list-item a:hover {
+      border: none;
+      color: #0aaa5f;
+      padding: 0.25rem;
+      transition: ease 0.3s;
+      box-shadow: 2px 2px 6px 4px #0aaa5f; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.main-movies {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  height: auto;
+  justify-content: space-around;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  top: 7rem; }
+  .main-movies__section {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 600px;
+    height: auto; }
+  .main-movies__title {
+    flex: 1 0 600px;
+    max-width: 600px;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
+  .main-movies__item {
+    width: 300px;
+    height: 50rem;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    overflow: hidden; }
+  .main-movies__item-title {
+    height: 2rem;
+    text-align: center; }
+  .main-movies__item-img {
+    width: 250px;
+    height: 375px;
+    align-self: center; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.search-form {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+  height: auto; }
+  .search-form__search {
+    padding: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0px 4px 16px 4px #000;
+    color: #0aaa5f;
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-style: italic; }
+  .search-form__icon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.6rem;
+    font-size: 1.4rem;
+    margin: .5rem .5rem;
+    color: #27db81; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.login {
+  position: absolute;
+  right: -14rem; }
+  .login__button {
+    color: #fff;
+    background-color: #0aaa5f;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer; }
+    .login__button:hover {
+      background-color: #862c99;
+      transition: all 0.8s; }
+  .login__icon {
+    font-size: 1.5rem;
+    text-align: center;
+    display: block;
+    margin: 15% auto;
+    cursor: pointer;
+    transition: transform 0.2s ease; }
+    .login__icon:hover {
+      transform: scale(0.9); }
+    .login__icon:before, .login__icon:after {
+      line-height: 0.5; }
+    .login__icon:before {
+      content: "☰";
+      display: block; }
+    .login__icon:after {
+      content: "&times;";
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: none; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.moviecrew-footer {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #eee;
+  align-items: center;
+  height: 7rem; }

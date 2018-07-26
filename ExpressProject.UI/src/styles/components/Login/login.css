@@ -1,0 +1,57 @@
+@charset "UTF-8";
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }
+
+.login {
+  position: absolute;
+  right: -14rem; }
+  .login__button {
+    color: #fff;
+    background-color: #0aaa5f;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer; }
+    .login__button:hover {
+      background-color: #862c99;
+      transition: all 0.8s; }
+  .login__icon {
+    font-size: 1.5rem;
+    text-align: center;
+    display: block;
+    margin: 15% auto;
+    cursor: pointer;
+    transition: transform 0.2s ease; }
+    .login__icon:hover {
+      transform: scale(0.9); }
+    .login__icon:before, .login__icon:after {
+      line-height: 0.5; }
+    .login__icon:before {
+      content: "☰";
+      display: block; }
+    .login__icon:after {
+      content: "&times;";
+      font-size: 1.5rem;
+      font-weight: 800;
+      display: none; }
