@@ -1,0 +1,23 @@
+.black-wrapper {
+  background-color: #000; }
+
+.gray-wrapper {
+  background-color: #eee; }
+
+.black-shadow-wrapper {
+  box-shadow: 2px 2px 2px 2px #000; }
+
+.display-none {
+  display: none; }
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999; }
+
+.relative-7rem {
+  position: relative;
+  top: 7rem; }

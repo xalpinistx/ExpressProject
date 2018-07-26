@@ -1,0 +1,37 @@
+@import "./base_styles/constants.scss";
+
+.search-form {
+  @include flex-container;
+  justify-content: center;
+  position: relative;
+  height: auto;
+
+  &__search {
+    
+    padding: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0px 4px 16px 4px $mc-black;
+    color: $mc-light-green;
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-style: italic;
+
+    // &:before {
+    //   content: "";
+
+    //   display: flex;
+    // }
+  }
+  &__icon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.6rem;
+    font-size: 1.4rem;
+    margin: .5rem .5rem; 
+    color: $mc-darker-green;
+  }
+}
