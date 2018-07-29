@@ -1,6 +1,8 @@
 ﻿using ExpressProject.Api.Models;
 using ExpressProject.Service.Interfaces;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -41,65 +43,85 @@ namespace ExpressProject.Api.Controllers
         ///
         [HttpGet]
         [Route("getTopRatedMovies")]
-        public async Task<IHttpActionResult> GetTopRatedMovies(int requestPage = 1)
+        public async Task<HttpResponseMessage> GetTopRatedMovies(int requestPage = 1)
         {
-            int totalPages;
-
             var movies = await _movieApiService.GetTopRatedAsync(requestPage);
-            totalPages = movies.TotalPages;
 
-            if (movies != null)
+            if (movies.Error == null)
             {
-                var result = new ViewModelTopRatedMovies()
+                MoviesViewModel moviesModel = new MoviesViewModel()
                 {
                     Movies = movies.Results.ToList(),
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalTopRatedMovies = movies.TotalResults
                 };
-                return Ok(result);
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
             }
-
-            return NotFound();
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
         [HttpGet]
         [Route("getLatestMovies")]
-        public async Task<IHttpActionResult> GetLatestMovies()
+        public async Task<HttpResponseMessage> GetLatestMovies()
         {
-            var movies = await _movieApiService.GetLatestAsync();
+            var movie = await _movieApiService.GetLatestAsync();
 
-            if (movies != null)
-                return Ok(movies.Json);
-
-            return NotFound();
+            if (movie.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movie.Error.StatusCode, movie.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
         [HttpGet]
         [Route("getMovieByTitle")]
-        public async Task<IHttpActionResult> GetMovieByTitleAsync(int requestPage = 1)
+        public async Task<HttpResponseMessage> GetMovieByTitleAsync(string title, int requestPage = 1)
         {
-            int totalPages;
+            var movies = await _movieApiService.SearchByTitleAsync(title, requestPage);
 
-            var movies = await _movieApiService.SearchByTitleAsync("Star Wars", requestPage);
-            totalPages = movies.TotalPages;
+            if (movies.Error == null)
+            {
+                MoviesViewModel moviesModel = new MoviesViewModel()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalTopRatedMovies = movies.TotalResults
+                };
 
-            if (movies != null)
-                return Ok(movies.Json);
-
-            return NotFound();
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
         [HttpGet]
         [Route("getMovieById")]
-        public async Task<IHttpActionResult> GetMovieById(int movieId)
+        public async Task<HttpResponseMessage> GetMovieById(int movieId)
         {
             var movie = await _movieApiService.FindByIdAsync(movieId);
 
-            if (movie != null)
-                return Ok(movie.Json);
-
-            return NotFound();
+            if (movie.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movie.Json);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movie.Error.StatusCode, movie.Error.Message);
+                return new HttpResponseMessage(){ Content = new StringContent(message) };
+            }
         }
     }
 }
