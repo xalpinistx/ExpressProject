@@ -13,14 +13,14 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
 {
     internal class ApiMovieRequest : ApiRequestBase, IApiMovieRequest
     {
-        //private readonly IApiGenreRequest _genreApi;
+        private readonly IApiGenreRequest _genreApi;
         private readonly IMovieDbSettings _settings;
 
         [ImportingConstructor]
-        public ApiMovieRequest(IMovieDbSettings settings /*, IApiGenreRequest genreApi*/)
+        public ApiMovieRequest(IMovieDbSettings settings , IApiGenreRequest genreApi)
             : base(settings)
         {
-            //_genreApi = genreApi;
+            _genreApi = genreApi;
             _settings = settings;
         }
 
@@ -162,7 +162,7 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
                 return response;
             }
 
-            //response.Results.PopulateGenres(_genreApi);
+            response.Results.PopulateGenres(_genreApi);
 
             return response;
         }
@@ -188,7 +188,7 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
                 return response;
             }
 
-            //response.Results.PopulateGenres(_genreApi);
+            response.Results.PopulateGenres(_genreApi);
 
             return response;
         }
