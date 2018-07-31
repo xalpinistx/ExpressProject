@@ -118,7 +118,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MoviesInfoViewModel.cs" />
     <Compile Include="Models\MoviesViewModel.cs" />
+    <Compile Include="Models\PagesInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,8 +6,10 @@ using System.Web;
 
 namespace ExpressProject.Api.Models
 {
-    public class MoviesViewModel : PagesInfoViewModel
+    public class PagesInfoViewModel
     {
-        public List<Movie> Movies { get; set; }
+        public int PageNumber { get; set; }
+        public int TotalPages { get; set; }
+        public int TotalMovies { get; set; }
     }
 }
