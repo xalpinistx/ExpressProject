@@ -1,6 +1,8 @@
 ﻿using ExpressProject.Api.Models;
 using ExpressProject.Service.Interfaces;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -26,80 +28,185 @@ namespace ExpressProject.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Gets the list of top rated movies which is refreshed daily.
         /// </summary>
         /// <param name="requestPage">Number of current page</param>
-        /// 
         /// <returns>Movie object JSON formated with fields: current page, total pages, 
         /// total content, 20 top rated movies of the current page</returns>
         ///
-        /// movie {
-        ///     
-        ///     
-        ///     
-        /// } 
-        ///
         [HttpGet]
         [Route("getTopRatedMovies")]
-        public async Task<IHttpActionResult> GetTopRatedMovies(int requestPage = 1)
+        public async Task<HttpResponseMessage> GetTopRatedMovies(int requestPage = 1)
         {
-            int totalPages;
-
             var movies = await _movieApiService.GetTopRatedAsync(requestPage);
-            totalPages = movies.TotalPages;
 
-            if (movies != null)
+            if (movies.Error == null)
             {
-                var result = new ViewModelTopRatedMovies()
+                MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
                 {
                     Movies = movies.Results.ToList(),
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
-                    TotalTopRatedMovies = movies.TotalResults
+                    TotalMovies = movies.TotalResults
                 };
-                return Ok(result);
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
             }
-
-            return NotFound();
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
+        /// <summary>
+        /// Gets the most recent movie that has been added to TheMovieDb.org.
+        /// </summary>
+        /// <returns>Movie or error with message.</returns>
         [HttpGet]
-        [Route("getLatestMovies")]
-        public async Task<IHttpActionResult> GetLatestMovies()
+        [Route("getLatestMovie")]
+        public async Task<HttpResponseMessage> GetLatestMovie()
         {
-            var movies = await _movieApiService.GetLatestAsync();
+            var movie = await _movieApiService.GetLatestAsync();
 
-            if (movies != null)
-                return Ok(movies.Json);
-
-            return NotFound();
+            if (movie.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movie.Error.StatusCode, movie.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
+        /// <summary>
+        /// Searches for Movies by title.
+        /// </summary>
+        /// <param name="title">Title of the searching film</param>
+        /// <param name="requestPage">Default is page 1. The page number to retrieve.</param>
+        /// <returns><see cref="MoviesInfoViewModel"/> with movies content or error with message/></returns>
+        /// 
         [HttpGet]
-        [Route("getMovieByTitle")]
-        public async Task<IHttpActionResult> GetMovieByTitleAsync(int requestPage = 1)
+        [Route("getMoviesByTitle")]
+        public async Task<HttpResponseMessage> GetMoviesByTitleAsync(string title, int requestPage = 1)
         {
-            int totalPages;
+            var movies = await _movieApiService.SearchByTitleAsync(title, requestPage);
 
-            var movies = await _movieApiService.SearchByTitleAsync("Star Wars", requestPage);
-            totalPages = movies.TotalPages;
+            if (movies.Error == null)
+            {
+                MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalMovies = movies.TotalResults
+                };
 
-            if (movies != null)
-                return Ok(movies.Json);
-
-            return NotFound();
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
 
+        /// <summary>
+        /// Gets all the information about a specific Movie.
+        /// </summary>
+        /// <param name="movieId">The movie Id is typically found from a more generic Movie query.</param>
+        /// <returns>movie or error with message.</returns>
+        /// 
         [HttpGet]
         [Route("getMovieById")]
-        public async Task<IHttpActionResult> GetMovieById(int movieId)
+        public async Task<HttpResponseMessage> GetMovieById(int movieId)
         {
             var movie = await _movieApiService.FindByIdAsync(movieId);
 
-            if (movie != null)
-                return Ok(movie.Json);
+            if (movie.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movie.Error.StatusCode, movie.Error.Message);
+                return new HttpResponseMessage(){ Content = new StringContent(message) };
+            }
+        }
 
-            return NotFound();
+        [HttpGet]
+        [Route("getUpcommingMovies")]
+        public async Task<HttpResponseMessage> GetUpcomingMovies(int pageNumber = 1)
+        {
+            var movies = await _movieApiService.GetUpcomingAsync(pageNumber);
+
+            if (movies.Error == null)
+            {
+                MoviesViewModel moviesModel = new MoviesViewModel()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalMovies = movies.TotalResults
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
+        }
+
+        [HttpGet]
+        [Route("getPopularMovies")]
+        public async Task<HttpResponseMessage> GetPopularMovies(int pageNumber = 1)
+        {
+            var movies = await _movieApiService.GetPopularAsync(pageNumber);
+
+            if (movies.Error == null)
+            {
+                MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalMovies = movies.TotalResults
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
+        }
+
+        [HttpGet]
+        [Route("getNowPlayingMovies")]
+        public async Task<HttpResponseMessage> GetNowPlayingMovies(int pageNumber = 1)
+        {
+            var movies = await _movieApiService.GetNowPlayingAsync(pageNumber);
+
+            if (movies.Error == null)
+            {
+                MoviesViewModel moviesModel = new MoviesViewModel()
+                {
+                    Movies = movies.Results.ToList(),
+                    TotalPages = movies.TotalPages,
+                    PageNumber = movies.PageNumber,
+                    TotalMovies = movies.TotalResults
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, moviesModel);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
         }
     }
 }

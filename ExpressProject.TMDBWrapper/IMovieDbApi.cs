@@ -22,7 +22,7 @@ namespace ExpressProject.TMDBWrapper
         /// <summary>
         /// Provides access for retrieving Movie and TV genres.
         /// </summary>
-        //IApiGenreRequest Genres { get; }
+        IApiGenreRequest Genres { get; }
 
         /// <summary>
         /// Provides access for retrieving information about Movie/TV industry specific professions.

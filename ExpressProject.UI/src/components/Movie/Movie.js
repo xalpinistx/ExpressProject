@@ -8,7 +8,7 @@ const Movie = ({ index, movie }) => {
       <a href="">
         <img
           className="main-movies__item-img"
-          src={`http://image.tmdb.org/t/p/original${poster_path}`}
+          src={poster_path}
           alt={title}
         />
       </a>

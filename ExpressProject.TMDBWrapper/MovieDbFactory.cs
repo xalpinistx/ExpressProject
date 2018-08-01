@@ -112,8 +112,8 @@ namespace ExpressProject.TMDBWrapper
             {
                 SupportedDependencyTypeMap = new Dictionary<Type, Func<object>>
                 {
-                    {typeof(IMovieDbSettings), () => Settings}//,
-                    //{typeof(IApiGenreRequest), () => new ApiGenreRequest( Settings )}
+                    {typeof(IMovieDbSettings), () => Settings},
+                    {typeof(IApiGenreRequest), () => new ApiGenreRequest( Settings )}
                 };
 
                 TypeCtorMap = new ConcurrentDictionary<Type, ConstructorInfo>();

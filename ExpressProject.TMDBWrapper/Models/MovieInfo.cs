@@ -22,10 +22,10 @@ namespace ExpressProject.TMDBWrapper.Models
         [DataMember(Name = "backdrop_path")]
         public string BackdropPath { get; set; }
 
-        //[DataMember(Name = "genre_ids")]
-        //internal IReadOnlyList<int> GenreIds { get; set; }
+        [DataMember(Name = "genre_ids")]
+        internal IReadOnlyList<int> GenreIds { get; set; }
 
-        //public IReadOnlyList<Genre> Genres { get; set; }
+        public IReadOnlyList<Genre> Genres { get; set; }
 
         [DataMember(Name = "original_title")]
         public string OriginalTitle { get; set; }
@@ -53,8 +53,8 @@ namespace ExpressProject.TMDBWrapper.Models
 
         public MovieInfo()
         {
-            //GenreIds = new int[0];
-            //Genres = new Genre[0];
+            GenreIds = new int[0];
+            Genres = new Genre[0];
         }
 
         public override string ToString()
