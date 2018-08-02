@@ -13,14 +13,16 @@ class Movies extends React.Component {
     if (!this.props.topRatedMovies.movies) return <div>Load...</div>;
 
     if (this.props.topRatedMovies.movies) {
-      const { movies } = this.props.topRatedMovies;
+      const { movies, posterSizes } = this.props.topRatedMovies;
+      //const movies = this.props.topRatedMovies.movies;
+      //const posterSizes = this.props.topRatedMovies.posterSizes;
       //console.log(this.props.topRatedMovies.movies[0].original_title);
       return (
         <main className="main-movies">
           <section className="main-movies__section">
             <h2 className="main-movies__title">Top Rated</h2>
               {movies.map(movie => {
-                return <Movie index={movie.id} key={movie.id} movie={movie} />;
+                return <Movie index={movie.id} key={movie.id} movie={movie} posterUrls={posterSizes}/>;
               })}
           </section>
           {/* <section className="main-movies__section">

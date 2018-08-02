@@ -21,6 +21,13 @@ namespace ExpressProject.Service.Services
             _movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
         }
 
+        public async Task<IReadOnlyList<string>> GetAllPosterSizesAsync()
+        {
+            var images = await _movieApi.GetAllMoviePosterSizesAsync();
+
+            return images;
+        }
+
         public async Task<ApiQueryResponse<Movie>> FindByIdAsync(int movieId, string language = "en")
         {
             ApiQueryResponse<Movie> response = await _movieApi.FindByIdAsync(movieId);
@@ -28,35 +35,35 @@ namespace ExpressProject.Service.Services
             return response;
         }
 
-        public async Task<ApiQueryResponse<Movie>> GetLatestAsync(string language = "en")
+        public async Task<ApiQueryResponse<Movie>> SearchLatestAsync(string language = "en")
         {
             ApiQueryResponse<Movie> response = await _movieApi.GetLatestAsync();
 
             return response;
         }
 
-        public async Task<ApiSearchResponse<Movie>> GetNowPlayingAsync(int pageNumber = 1, string language = "en")
+        public async Task<ApiSearchResponse<Movie>> SearchNowPlayingAsync(int pageNumber = 1, string language = "en")
         {
             ApiSearchResponse<Movie> response = await _movieApi.GetNowPlayingAsync();
 
             return response;
         }
 
-        public async Task<ApiSearchResponse<MovieInfo>> GetPopularAsync(int pageNumber = 1, string language = "en")
+        public async Task<ApiSearchResponse<MovieInfo>> SearchPopularAsync(int pageNumber = 1, string language = "en")
         {
             ApiSearchResponse<MovieInfo> response = await _movieApi.GetPopularAsync();
 
             return response;
         }
 
-        public async Task<ApiSearchResponse<MovieInfo>> GetTopRatedAsync(int pageNumber = 1, string language = "en")
+        public async Task<ApiSearchResponse<MovieInfo>> SearchTopRatedAsync(int pageNumber = 1, string language = "en")
         {
             ApiSearchResponse<MovieInfo> response = await _movieApi.GetTopRatedAsync(pageNumber, language);
 
             return response;
         }
 
-        public async Task<ApiSearchResponse<Movie>> GetUpcomingAsync(int pageNumber = 1, string language = "en")
+        public async Task<ApiSearchResponse<Movie>> SearchUpcomingAsync(int pageNumber = 1, string language = "en")
         {
             ApiSearchResponse<Movie> response = await _movieApi.GetUpcomingAsync();
 

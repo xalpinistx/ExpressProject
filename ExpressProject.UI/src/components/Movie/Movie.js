@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const Movie = ({ index, movie }) => {
+const Movie = ({ index, movie, posterUrls }) => {
   const { adult, poster_path, backdrop_path, title, overview } = movie;
   return (
     <div className="main-movies__item">
@@ -8,7 +8,7 @@ const Movie = ({ index, movie }) => {
       <a href="">
         <img
           className="main-movies__item-img"
-          src={poster_path}
+          src={posterUrls[4] + poster_path}
           alt={title}
         />
       </a>

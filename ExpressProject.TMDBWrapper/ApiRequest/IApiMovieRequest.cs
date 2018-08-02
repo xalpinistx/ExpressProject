@@ -1,6 +1,7 @@
 ﻿using ExpressProject.TMDBWrapper.ApiRequest;
 using ExpressProject.TMDBWrapper.ApiResponse;
 using ExpressProject.TMDBWrapper.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ExpressProject.TMDBWrapper.ApiRequest
@@ -10,6 +11,12 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
     /// </summary>
     public interface IApiMovieRequest : IApiRequest
     {
+        /// <summary>
+        /// Gets all urls to poster sizes.
+        /// </summary>
+        /// <returns>List of urls with poster sizes.</returns>
+        Task<IReadOnlyList<string>> GetAllMoviePosterSizesAsync();
+
         /// <summary>
         /// Gets all the information about a specific Movie.
         /// </summary>
