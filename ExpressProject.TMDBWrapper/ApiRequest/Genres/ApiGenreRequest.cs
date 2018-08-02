@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper.ApiRequest
+namespace ExpressProject.TMDBWrapper.ApiRequest.Genres
 {
     internal class ApiGenreRequest : ApiRequestBase, IApiGenreRequest
     {

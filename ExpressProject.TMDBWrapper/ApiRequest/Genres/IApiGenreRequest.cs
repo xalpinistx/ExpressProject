@@ -3,7 +3,7 @@ using ExpressProject.TMDBWrapper.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper.ApiRequest
+namespace ExpressProject.TMDBWrapper.ApiRequest.Genres
 {
     /// <summary>
     /// Interface representing Movie and TV genres.

@@ -1,4 +1,6 @@
 ﻿using ExpressProject.TMDBWrapper.ApiRequest;
+using ExpressProject.TMDBWrapper.ApiRequest.Genres;
+using ExpressProject.TMDBWrapper.ApiRequest.Movies;
 using ExpressProject.TMDBWrapper.Configuration;
 
 namespace ExpressProject.TMDBWrapper

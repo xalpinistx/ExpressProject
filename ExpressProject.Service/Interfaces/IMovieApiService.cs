@@ -23,6 +23,6 @@ namespace ExpressProject.Service.Interfaces
 
         Task<ApiSearchResponse<MovieInfo>> SearchPopularAsync(int pageNumber = 1, string language = "en");
 
-        //Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en");
+        Task<ApiQueryResponse<MovieCredit>> SearchCreditsAsync(int movieId, string language = "en");
     }
 }

@@ -4,7 +4,7 @@ using ExpressProject.TMDBWrapper.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper.ApiRequest
+namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
 {
     /// <summary>
     /// Interface for retrieving information about Movies.
@@ -71,6 +71,6 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
         /// </summary>
         /// <param name="movieId">The movie Id is typically found from a more generic Movie query.</param>
         /// <param name="language">Default is English. The ISO 639-1 language code to retrieve the result from.</param>
-        //Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en");
+        Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en");
     }
 }

@@ -12,7 +12,9 @@ namespace ExpressProject.Api.Models
         public IReadOnlyList<string> LogoSizes { get; set; }
         public IReadOnlyList<string> ProfileSizes { get; set; }
         public IReadOnlyList<string> BackdropSizes { get; set; }
-        
+
+        public List<MovieCredit> MovieCredits { get; set; }
+
         public List<Movie> Movies { get; set; }
     }
 }

@@ -222,5 +222,22 @@ namespace ExpressProject.Api.Controllers
                 return new HttpResponseMessage() { Content = new StringContent(message) };
             }
         }
+
+        [HttpGet]
+        [Route("getMovieCredits")]
+        public async Task<HttpResponseMessage> GetMovieCredits(int movieId)
+        {
+            var movieCredits = await _movieApiService.SearchCreditsAsync(movieId);
+
+            if (movieCredits.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movieCredits.Item);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movieCredits.Error.StatusCode, movieCredits.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
+        }
     }
 }

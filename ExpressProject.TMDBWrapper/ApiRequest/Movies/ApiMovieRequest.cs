@@ -1,4 +1,5 @@
-﻿using ExpressProject.TMDBWrapper.ApiResponse;
+﻿using ExpressProject.TMDBWrapper.ApiRequest.Genres;
+using ExpressProject.TMDBWrapper.ApiResponse;
 using ExpressProject.TMDBWrapper.Configuration;
 using ExpressProject.TMDBWrapper.Models;
 using ExpressProject.TMDBWrapper.Shims;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper.ApiRequest
+namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
 {
     internal class ApiMovieRequest : ApiRequestBase, IApiMovieRequest
     {
@@ -202,18 +203,18 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
             return response;
         }
 
-        //public async Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en")
-        //{
-        //    var param = new Dictionary<string, string>
-        //    {
-        //        {"language", language},
-        //    };
+        public async Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en")
+        {
+            var param = new Dictionary<string, string>
+            {
+                {"language", language},
+            };
 
-        //    string command = $"movie/{movieId}/credits";
+            string command = $"movie/{movieId}/credits";
 
-        //    ApiQueryResponse<MovieCredit> response = await base.QueryAsync<MovieCredit>(command, param);
+            ApiQueryResponse<MovieCredit> response = await base.QueryAsync<MovieCredit>(command, param);
 
-        //    return response;
-        //}
+            return response;
+        }
     }
 }
