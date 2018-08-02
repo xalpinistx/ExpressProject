@@ -44,11 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiRequest\ApiGenreRequest.cs" />
-    <Compile Include="ApiRequest\IApiGenreRequest.cs" />
+    <Compile Include="ApiRequest\Genres\ApiGenreRequest.cs" />
+    <Compile Include="ApiRequest\Genres\IApiGenreRequest.cs" />
     <Compile Include="ApiRequest\IsoDateTimeConverterEx.cs" />
     <Compile Include="ApiResponse\ApiError.cs" />
-    <Compile Include="ApiRequest\ApiMovieRequest.cs" />
+    <Compile Include="ApiRequest\Movies\ApiMovieRequest.cs" />
     <Compile Include="ApiRequest\ApiRequestBase.cs" />
     <Compile Include="ApiRequest\IApiRequest.cs" />
     <Compile Include="ApiResponse\ApiQueryResponse.cs" />
@@ -60,21 +60,20 @@
     <Compile Include="Configuration\ApiConfigurationRequest.cs" />
     <Compile Include="Configuration\IApiConfigurationRequest.cs" />
     <Compile Include="Configuration\ImageConfiguration.cs" />
-    <Compile Include="GenreFactory.cs" />
-    <Compile Include="GenreIdCollectionMappingExtensions.cs" />
+    <Compile Include="ApiRequest\Genres\GenreFactory.cs" />
+    <Compile Include="ApiRequest\Genres\GenreIdCollectionMappingExtensions.cs" />
     <Compile Include="IMovieDbApi.cs" />
     <Compile Include="IMovieDbSettings.cs" />
-    <Compile Include="ApiRequest\IApiMovieRequest.cs" />
+    <Compile Include="ApiRequest\Movies\IApiMovieRequest.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieCredit.cs" />
     <Compile Include="Models\MovieInfo.cs" />
     <Compile Include="MovieDbFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shims\ImportingConstructorAttribute.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\ApiIntrfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
