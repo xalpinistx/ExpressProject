@@ -6,17 +6,18 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ExpressProject.TMDBWrapper.ApiResponse;
+using ExpressProject.TMDBWrapper.Configuration;
 using Newtonsoft.Json;
 
 namespace ExpressProject.TMDBWrapper.ApiRequest
 {
     public abstract class ApiRequestBase
     {
-        private readonly IMovieDbSettings _settings;
+        private readonly IMovieDbSettings settings;
 
         protected ApiRequestBase(IMovieDbSettings settings)
         {
-            _settings = settings;
+            this.settings = settings;
         }
 
         public async Task<ApiQueryResponse<T>> QueryAsync<T>(string command)
@@ -154,7 +155,7 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
             var client = new HttpClient(handler);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("appliction/json"));
-            client.BaseAddress = new Uri(_settings.ApiUrl);
+            client.BaseAddress = new Uri(settings.ApiUrl);
 
             return client;
         }
@@ -164,7 +165,7 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
 
         protected string CreateCommand(string rootCommand, IDictionary<string, string> parameters)
         {
-            string command = $"{rootCommand}?api_key={_settings.ApiKey}";
+            string command = $"{rootCommand}?api_key={settings.ApiKey}";
 
             string tokens = parameters.Any()
                 ? string.Join("&", parameters.Select(x => x.Key + "=" + x.Value))

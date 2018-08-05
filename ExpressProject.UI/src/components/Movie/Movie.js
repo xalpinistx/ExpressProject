@@ -59,6 +59,15 @@ const Movie = ({ index, movie, urls }) => {
           />
         </div>
       </div>
+      <h3 className="main-movies__item-title">{title}</h3>
+      <a href="">
+        <img
+          className="main-movies__item-img"
+          src={poster_path}
+          alt={title}
+        />
+      </a>
+      <p className="main-movies__desc">{overview}</p>
     </div>
   );
 };

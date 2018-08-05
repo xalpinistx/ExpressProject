@@ -18,6 +18,12 @@ namespace ExpressProject.TMDBWrapper.ApiResponse
         public IReadOnlyList<T> Results { get; private set; }
 
         /// <summary>
+        /// The list of movie images from the search.
+        /// </summary>
+        [DataMember(Name = "images")]
+        public IReadOnlyList<T> Images { get; private set; }
+
+        /// <summary>
         /// The current page number of the search result.
         /// </summary>
         [DataMember(Name = "page")]

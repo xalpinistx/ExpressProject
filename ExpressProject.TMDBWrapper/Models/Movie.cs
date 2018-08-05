@@ -29,8 +29,8 @@ namespace ExpressProject.TMDBWrapper.Models
         [DataMember(Name = "budget")]
         public int Budget { get; set; }
 
-        //[DataMember(Name = "genres")]
-        //public IReadOnlyList<Genre> Genres { get; set; }
+        [DataMember(Name = "genres")]
+        public IReadOnlyList<Genre> Genres { get; set; }
 
         [DataMember(Name = "homepage")]
         public string Homepage { get; set; }
@@ -95,7 +95,7 @@ namespace ExpressProject.TMDBWrapper.Models
 
         public Movie()
         {
-            //Genres = new Genre[0];
+            Genres = new Genre[0];
             //Keywords = new Keyword[0];
             //ProductionCompanies = new ProductionCompanyInfo[0];
             //ProductionCountries = new Country[0];
