@@ -12,7 +12,7 @@ const movies = (state = {}, action) => {
         movies: action.payload.Movies,
         totalPages: action.payload.TotalPages,
         pageNumber: action.payload.PageNumber,
-        totalTopRatedMovies: action.payload.TotalTopRatedMovies
+        totalMovies: action.payload.TotalMovies
       }
 
     case "GET_MOVIE":

@@ -22,6 +22,34 @@
   position: relative;
   top: 7rem; }
 
+.dots-wrapper {
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.p-fixed {
+  line-height: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: normal; }
+
+.text-transform {
+  text-transform: uppercase; }
+
+.text-center {
+  text-align: center; }
+
+.show-vote-absolute {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
 .moviecrew-footer {
   display: flex;
   flex-flow: row wrap;
