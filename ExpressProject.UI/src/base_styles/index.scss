@@ -1,9 +1,11 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i');
 
 @import "./node_modules/normalize-scss/sass/normalize";
 @import "base.scss";
 @import "components/Header/header.scss";
-@import "components/Movies/movie.scss";
+@import "components/Movies/movies.scss";
+@import "components/Movie/movie.scss";
 @import "components/Search/searchform.scss";
 @import "components/Login/login.scss";
 @import "constants.scss";

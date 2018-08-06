@@ -2,17 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import Movie from "../Movie/Movie";
 
-import getTopRatedMovies from ".././actions/getTopRatedMovies";
+import getTopRatedMovies from "../actions/getTopRatedMovies";
 
 class Movies extends React.Component {
   componentDidMount() {
     this.props.getTopRatedMovies();
   }
 
+  componentDidUpdate(){
+
+  }
+
+  componentWillUnmount(){
+
+  }
+
   render() {
     if (!this.props.topRatedMovies.movies) return <div>Load...</div>;
 
     if (this.props.topRatedMovies.movies) {
+<<<<<<< HEAD
       const { movies, posterSizes } = this.props.topRatedMovies;
       //const movies = this.props.topRatedMovies.movies;
       //const posterSizes = this.props.topRatedMovies.posterSizes;
@@ -24,6 +33,24 @@ class Movies extends React.Component {
               {movies.map(movie => {
                 return <Movie index={movie.id} key={movie.id} movie={movie} posterUrls={posterSizes}/>;
               })}
+=======
+      const {
+        movies,
+        totalPages,
+        pageNumber,
+        totalMovies
+      } = this.props.topRatedMovies;
+
+      const renderMovie = movie => {
+        return <Movie index={movie.id} key={movie.id} movie={movie} />;
+      };
+
+      return (
+        <main className="main-movies">
+          <section className="main-movies__section">
+            <h2 className="main-movies__title text-transform">Top Rated</h2>
+            <div className="main-movies__items">{movies.map(renderMovie)}</div>
+>>>>>>> e58da88293821d9ea23f98052eca069abcc037e7
           </section>
           {/* <section className="main-movies__section">
             <h2 className="main-movies__title">Most viewed</h2>

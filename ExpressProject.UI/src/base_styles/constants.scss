@@ -3,6 +3,7 @@
 $mc-black: #000;
 $mc-white: #fff;
 $mc-gray: #eee;
+$mc-light-gray: #f7f7f7;
 $mc-red: red;
 $mc-body-bgc: #4f4f4f;
 $mc-light-green: #0aaa5f;
@@ -38,6 +39,40 @@ $mc-darker-green: #27db81;
 .relative-7rem {
   position: relative;
   top: 7rem;
+}
+
+.dots-wrapper {
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.p-fixed {
+  line-height: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.text-transform {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.show-vote-absolute {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @mixin flex-container {

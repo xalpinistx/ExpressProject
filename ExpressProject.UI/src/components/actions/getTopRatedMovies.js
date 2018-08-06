@@ -2,7 +2,8 @@ import axios from "axios";
 
 const routePrefix = "movie";
 const route = "getTopRatedMovies";
-const url = `http://localhost:56954/${routePrefix}/${route}`;
+const host = "localhost:56954";
+const url = `http://${host}/${routePrefix}/${route}`;
 
 const getTopRatedMovies = () => {
   const request = axios
@@ -36,12 +37,5 @@ function errorInRequest(error) {
   }
   console.log(error.config);
 }
-
-// function getTopRatedMovies() {
-//   return {
-//     type: "GET_MOVIE",
-//     payload: payload
-//   };
-// }
 
 export default getTopRatedMovies;
