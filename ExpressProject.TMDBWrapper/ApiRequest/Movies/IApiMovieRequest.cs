@@ -18,6 +18,12 @@ namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
         Task<IReadOnlyList<string>> GetAllMoviePosterSizesAsync();
 
         /// <summary>
+        /// Gets all urls to cast or crew member profile sizes
+        /// </summary>
+        /// <returns>List of orls with rofile sizes</returns>
+        Task<IReadOnlyList<string>> GetAllMovieProfileSizesAsync();
+
+        /// <summary>
         /// Gets all the information about a specific Movie.
         /// </summary>
         /// <param name="movieId">The movie Id is typically found from a more generic Movie query.</param>

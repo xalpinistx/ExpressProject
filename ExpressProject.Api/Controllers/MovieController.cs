@@ -39,7 +39,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetTopRatedMoviesAsync(int requestPage = 1)
         {
             var movies = await _movieApiService.SearchTopRatedAsync(requestPage);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
@@ -47,6 +48,7 @@ namespace ExpressProject.Api.Controllers
                 {
                     Movies = movies.Results.ToList(),
                     PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -69,7 +71,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetLatestMovieAsync()
         {
             var movie = await _movieApiService.SearchLatestAsync();
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movie.Error == null)
             {
@@ -95,7 +98,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetMoviesByTitleAsync(string title, int requestPage = 1)
         {
             var movies = await _movieApiService.SearchByTitleAsync(title, requestPage);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
@@ -103,6 +107,7 @@ namespace ExpressProject.Api.Controllers
                 {
                     Movies = movies.Results.ToList(),
                     PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -128,7 +133,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetMovieByIdAsync(int movieId)
         {
             var movie = await _movieApiService.FindByIdAsync(movieId);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movie.Error == null)
             {
@@ -147,7 +153,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetUpcomingMoviesAsync(int pageNumber = 1)
         {
             var movies = await _movieApiService.SearchUpcomingAsync(pageNumber);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
@@ -155,6 +162,7 @@ namespace ExpressProject.Api.Controllers
                 {
                     Movies = movies.Results.ToList(),
                     PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -174,7 +182,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetPopularMoviesAsync(int pageNumber = 1)
         {
             var movies = await _movieApiService.SearchPopularAsync(pageNumber);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
@@ -182,6 +191,7 @@ namespace ExpressProject.Api.Controllers
                 {
                     Movies = movies.Results.ToList(),
                     PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -201,7 +211,8 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetNowPlayingMoviesAsync(int pageNumber = 1)
         {
             var movies = await _movieApiService.SearchNowPlayingAsync(pageNumber);
-            var posterSizes = await _movieApiService.GetAllPosterSizesAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
@@ -209,6 +220,7 @@ namespace ExpressProject.Api.Controllers
                 {
                     Movies = movies.Results.ToList(),
                     PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -228,7 +240,7 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetMovieCredits(int movieId)
         {
             var movieCredits = await _movieApiService.SearchCreditsAsync(movieId);
-
+            
             if (movieCredits.Error == null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, movieCredits.Item);

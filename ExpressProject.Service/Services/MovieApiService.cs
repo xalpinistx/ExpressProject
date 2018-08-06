@@ -20,9 +20,16 @@ namespace ExpressProject.Service.Services
             _movieApi = MovieDbFactory.Create<IApiMovieRequest>().Value;
         }
 
-        public async Task<IReadOnlyList<string>> GetAllPosterSizesAsync()
+        public async Task<IReadOnlyList<string>> SearchAllPosterSizesAsync()
         {
             var images = await _movieApi.GetAllMoviePosterSizesAsync();
+
+            return images;
+        }
+
+        public async Task<IReadOnlyList<string>> SearchAllMovieProfileSizesAsync()
+        {
+            var images = await _movieApi.GetAllMovieProfileSizesAsync();
 
             return images;
         }

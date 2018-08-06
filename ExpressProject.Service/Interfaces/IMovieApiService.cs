@@ -1,4 +1,5 @@
-﻿using ExpressProject.TMDBWrapper.ApiResponse;
+﻿using ExpressProject.TMDBWrapper;
+using ExpressProject.TMDBWrapper.ApiResponse;
 using ExpressProject.TMDBWrapper.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,7 +8,9 @@ namespace ExpressProject.Service.Interfaces
 {
     public interface IMovieApiService
     {
-        Task<IReadOnlyList<string>> GetAllPosterSizesAsync();
+        Task<IReadOnlyList<string>> SearchAllPosterSizesAsync();
+
+        Task<IReadOnlyList<string>> SearchAllMovieProfileSizesAsync();
 
         Task<ApiQueryResponse<Movie>> FindByIdAsync(int movieId, string language = "en");
 
