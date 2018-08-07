@@ -21,28 +21,17 @@ class Movies extends React.Component {
     if (!this.props.topRatedMovies.movies) return <div>Load...</div>;
 
     if (this.props.topRatedMovies.movies) {
-<<<<<<< HEAD
-      const { movies, posterSizes } = this.props.topRatedMovies;
-      //const movies = this.props.topRatedMovies.movies;
-      //const posterSizes = this.props.topRatedMovies.posterSizes;
-      //console.log(this.props.topRatedMovies.movies[0].original_title);
-      return (
-        <main className="main-movies">
-          <section className="main-movies__section">
-            <h2 className="main-movies__title">Top Rated</h2>
-              {movies.map(movie => {
-                return <Movie index={movie.id} key={movie.id} movie={movie} posterUrls={posterSizes}/>;
-              })}
-=======
       const {
         movies,
+        posterSizes,
+        profileSizes,
         totalPages,
         pageNumber,
         totalMovies
       } = this.props.topRatedMovies;
 
       const renderMovie = movie => {
-        return <Movie index={movie.id} key={movie.id} movie={movie} />;
+        return <Movie index={movie.id} key={movie.id} movie={movie} posterUrls={posterSizes}/>;
       };
 
       return (
@@ -50,7 +39,6 @@ class Movies extends React.Component {
           <section className="main-movies__section">
             <h2 className="main-movies__title text-transform">Top Rated</h2>
             <div className="main-movies__items">{movies.map(renderMovie)}</div>
->>>>>>> e58da88293821d9ea23f98052eca069abcc037e7
           </section>
           {/* <section className="main-movies__section">
             <h2 className="main-movies__title">Most viewed</h2>

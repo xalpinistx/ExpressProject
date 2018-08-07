@@ -3,18 +3,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-<<<<<<< HEAD
-const Movie = ({ index, movie, posterUrls }) => {
-  const { adult, poster_path, backdrop_path, title, overview } = movie;
-=======
 import niceParagraph from "../helpers/nicerParagraph";
 
 import { PieChart } from "react-easy-chart";
 import dateformat from "dateformat";
 
-const Movie = ({ index, movie, urls }) => {
+const Movie = ({ index, movie, posterUrls }) => {
   const { poster_path, title, overview, vote_average, release_date } = movie;
->>>>>>> e58da88293821d9ea23f98052eca069abcc037e7
+
   return (
     <div className="main-movies__item">
       <div className="main-movies__item-img-content">
