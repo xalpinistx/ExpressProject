@@ -14,17 +14,17 @@ const Movie = ({ index, movie, posterUrls }) => {
   return (
     <div className="main-movies__item">
       <div className="main-movies__item-img-content">
-        <a href="" className="main-movies__item-link">
+        <Link to={`/movies/${index}`} className="main-movies__item-link">
           <img
             className="main-movies__item-img"
-            src={poster_path}
-            alt={title}
+            src={posterUrls[4] + poster_path}
+            alt={index}
           />
-        </a>
+        </Link>
       </div>
       <div className="main-movies__item-desc-content">
         <Link
-          to={`/movies/${title}`}
+          to={`/movies/${index}`}
           className="main-movies__item-title text-transform text-center"
         >
           {title}
@@ -60,14 +60,6 @@ const Movie = ({ index, movie, posterUrls }) => {
           />
         </div>
       </div>
-      <h3 className="main-movies__item-title">{title}</h3>
-      <a href="">
-        <img
-          className="main-movies__item-img"
-          src={posterUrls[4] + poster_path}
-          alt={title}
-        />
-      </a>
       <p className="main-movies__desc">{overview}</p>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Movie from "../Movie/Movie";
+import { bindActionCreators } from 'redux';
 
 import getTopRatedMovies from "../actions/getTopRatedMovies";
 
@@ -9,13 +10,9 @@ class Movies extends React.Component {
     this.props.getTopRatedMovies();
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {}
 
-  }
-
-  componentWillUnmount(){
-
-  }
+  componentWillUnmount() {}
 
   render() {
     if (!this.props.topRatedMovies.movies) return <div>Load...</div>;
@@ -31,7 +28,14 @@ class Movies extends React.Component {
       } = this.props.topRatedMovies;
 
       const renderMovie = movie => {
-        return <Movie index={movie.id} key={movie.id} movie={movie} posterUrls={posterSizes}/>;
+        return (
+          <Movie
+            index={movie.id}
+            key={movie.id}
+            movie={movie}
+            posterUrls={posterSizes}
+          />
+        );
       };
 
       return (
@@ -62,9 +66,27 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+//const mapDispatchToProps = (dispatch) => {
+//  return {
+//    getTopRatedMovies: function() {
+//      return dispatch(getTopRatedMovies())
+//    }
+//  }
+//}
+
+//const mapDispatchToProps = {
+//  getTopRatedMovies
+//};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getTopRatedMovies
+  }, dispatch)
+}
+
 const TopReatedMovies = connect(
   mapStateToProps,
-  { getTopRatedMovies }
+  mapDispatchToProps
 )(Movies);
 
 export default TopReatedMovies;

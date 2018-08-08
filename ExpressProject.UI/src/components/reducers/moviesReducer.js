@@ -14,9 +14,11 @@ const movies = (state = {}, action) => {
         pageNumber: action.payload.PageNumber,
         totalMovies: action.payload.TotalMovies,
         posterSizes: action.payload.PosterSizes
-      }
+      };
 
-    case "GET_MOVIE":
+    case "GET_MOVIE_BY_ID":
+      console.log(action);
+      console.log(state);
       if (state.id !== action.id) return state;
       return action.payload;
 

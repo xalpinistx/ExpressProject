@@ -1,16 +1,23 @@
 import axios from "axios";
 
-const url = ``;
+const routePrefix = "movie";
+const route = "getMovieById";
+const host = "localhost:56954";
+const url = `http://${host}/${routePrefix}/${route}`;
 
-const payload = async function getMovieAsync(id) {
-  const request = await axios
+function getMovieById(id) {
+  const request = axios
     .get(`${url}/${id}`)
     .then(response => {
-      console.log(response);
-      //movie;
+      return response.data;
     })
     .catch(error => errorInRequest(error));
-}
+
+  return {
+    type: "GET_MOVIE_BY_ID",
+    payload: request
+  };
+};
 
 function errorInRequest(error) {
   if (error.response) {
@@ -31,11 +38,4 @@ function errorInRequest(error) {
   console.log(error.config);
 }
 
-function getMovie(id) {
-  return {
-    type: 'GET_MOVIE',
-    payload: payload
-  } 
-}
-
-export default getMovie;
+export default getMovieById;
