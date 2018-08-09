@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace ExpressProject.TMDBWrapper
+namespace ExpressProject.TMDBWrapper.ApiRequest.Genres
 {
     public static class GenreFactory
     {

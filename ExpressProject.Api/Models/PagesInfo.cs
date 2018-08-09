@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ExpressProject.Api.Models
 {
-    public class PagesInfoViewModel
+    public class PagesInfo
     {
         public int PageNumber { get; set; }
         public int TotalPages { get; set; }

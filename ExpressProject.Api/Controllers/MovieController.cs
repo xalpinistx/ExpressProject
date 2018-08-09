@@ -36,15 +36,19 @@ namespace ExpressProject.Api.Controllers
         ///
         [HttpGet]
         [Route("getTopRatedMovies")]
-        public async Task<HttpResponseMessage> GetTopRatedMovies(int requestPage = 1)
+        public async Task<HttpResponseMessage> GetTopRatedMoviesAsync(int requestPage = 1)
         {
-            var movies = await _movieApiService.GetTopRatedAsync(requestPage);
+            var movies = await _movieApiService.SearchTopRatedAsync(requestPage);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
                 MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
                 {
                     Movies = movies.Results.ToList(),
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -64,12 +68,15 @@ namespace ExpressProject.Api.Controllers
         /// <returns>Movie or error with message.</returns>
         [HttpGet]
         [Route("getLatestMovie")]
-        public async Task<HttpResponseMessage> GetLatestMovie()
+        public async Task<HttpResponseMessage> GetLatestMovieAsync()
         {
-            var movie = await _movieApiService.GetLatestAsync();
+            var movie = await _movieApiService.SearchLatestAsync();
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movie.Error == null)
             {
+                movie.Item.PosterPath = posterSizes.Last() + movie.Item.PosterPath;
                 return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
             }
             else
@@ -91,12 +98,16 @@ namespace ExpressProject.Api.Controllers
         public async Task<HttpResponseMessage> GetMoviesByTitleAsync(string title, int requestPage = 1)
         {
             var movies = await _movieApiService.SearchByTitleAsync(title, requestPage);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
                 MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
                 {
                     Movies = movies.Results.ToList(),
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -119,12 +130,15 @@ namespace ExpressProject.Api.Controllers
         /// 
         [HttpGet]
         [Route("getMovieById")]
-        public async Task<HttpResponseMessage> GetMovieById(int movieId)
+        public async Task<HttpResponseMessage> GetMovieByIdAsync(int movieId)
         {
             var movie = await _movieApiService.FindByIdAsync(movieId);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movie.Error == null)
             {
+                movie.Item.PosterPath = posterSizes.Last() + movie.Item.PosterPath;
                 return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
             }
             else
@@ -136,15 +150,19 @@ namespace ExpressProject.Api.Controllers
 
         [HttpGet]
         [Route("getUpcommingMovies")]
-        public async Task<HttpResponseMessage> GetUpcomingMovies(int pageNumber = 1)
+        public async Task<HttpResponseMessage> GetUpcomingMoviesAsync(int pageNumber = 1)
         {
-            var movies = await _movieApiService.GetUpcomingAsync(pageNumber);
+            var movies = await _movieApiService.SearchUpcomingAsync(pageNumber);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
                 MoviesViewModel moviesModel = new MoviesViewModel()
                 {
                     Movies = movies.Results.ToList(),
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -161,15 +179,19 @@ namespace ExpressProject.Api.Controllers
 
         [HttpGet]
         [Route("getPopularMovies")]
-        public async Task<HttpResponseMessage> GetPopularMovies(int pageNumber = 1)
+        public async Task<HttpResponseMessage> GetPopularMoviesAsync(int pageNumber = 1)
         {
-            var movies = await _movieApiService.GetPopularAsync(pageNumber);
+            var movies = await _movieApiService.SearchPopularAsync(pageNumber);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
                 MoviesInfoViewModel moviesModel = new MoviesInfoViewModel()
                 {
                     Movies = movies.Results.ToList(),
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -186,15 +208,19 @@ namespace ExpressProject.Api.Controllers
 
         [HttpGet]
         [Route("getNowPlayingMovies")]
-        public async Task<HttpResponseMessage> GetNowPlayingMovies(int pageNumber = 1)
+        public async Task<HttpResponseMessage> GetNowPlayingMoviesAsync(int pageNumber = 1)
         {
-            var movies = await _movieApiService.GetNowPlayingAsync(pageNumber);
+            var movies = await _movieApiService.SearchNowPlayingAsync(pageNumber);
+            var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
+            var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
 
             if (movies.Error == null)
             {
                 MoviesViewModel moviesModel = new MoviesViewModel()
                 {
                     Movies = movies.Results.ToList(),
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
                     TotalPages = movies.TotalPages,
                     PageNumber = movies.PageNumber,
                     TotalMovies = movies.TotalResults
@@ -205,6 +231,23 @@ namespace ExpressProject.Api.Controllers
             else
             {
                 var message = string.Format("Error {0}: {1}", movies.Error.StatusCode, movies.Error.Message);
+                return new HttpResponseMessage() { Content = new StringContent(message) };
+            }
+        }
+
+        [HttpGet]
+        [Route("getMovieCredits")]
+        public async Task<HttpResponseMessage> GetMovieCredits(int movieId)
+        {
+            var movieCredits = await _movieApiService.SearchCreditsAsync(movieId);
+            
+            if (movieCredits.Error == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, movieCredits.Item);
+            }
+            else
+            {
+                var message = string.Format("Error {0}: {1}", movieCredits.Error.StatusCode, movieCredits.Error.Message);
                 return new HttpResponseMessage() { Content = new StringContent(message) };
             }
         }

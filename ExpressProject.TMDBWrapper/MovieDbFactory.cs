@@ -1,4 +1,5 @@
 ﻿using ExpressProject.TMDBWrapper.ApiRequest;
+using ExpressProject.TMDBWrapper.ApiRequest.Genres;
 using ExpressProject.TMDBWrapper.Shims;
 using System;
 using System.Collections.Concurrent;

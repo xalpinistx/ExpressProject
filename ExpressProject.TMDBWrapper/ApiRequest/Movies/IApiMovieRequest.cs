@@ -1,15 +1,28 @@
 ﻿using ExpressProject.TMDBWrapper.ApiRequest;
 using ExpressProject.TMDBWrapper.ApiResponse;
 using ExpressProject.TMDBWrapper.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper.ApiRequest
+namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
 {
     /// <summary>
     /// Interface for retrieving information about Movies.
     /// </summary>
     public interface IApiMovieRequest : IApiRequest
     {
+        /// <summary>
+        /// Gets all urls to poster sizes.
+        /// </summary>
+        /// <returns>List of urls with poster sizes.</returns>
+        Task<IReadOnlyList<string>> GetAllMoviePosterSizesAsync();
+
+        /// <summary>
+        /// Gets all urls to cast or crew member profile sizes
+        /// </summary>
+        /// <returns>List of orls with rofile sizes</returns>
+        Task<IReadOnlyList<string>> GetAllMovieProfileSizesAsync();
+
         /// <summary>
         /// Gets all the information about a specific Movie.
         /// </summary>
@@ -64,6 +77,6 @@ namespace ExpressProject.TMDBWrapper.ApiRequest
         /// </summary>
         /// <param name="movieId">The movie Id is typically found from a more generic Movie query.</param>
         /// <param name="language">Default is English. The ISO 639-1 language code to retrieve the result from.</param>
-        //Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en");
+        Task<ApiQueryResponse<MovieCredit>> GetCreditsAsync(int movieId, string language = "en");
     }
 }

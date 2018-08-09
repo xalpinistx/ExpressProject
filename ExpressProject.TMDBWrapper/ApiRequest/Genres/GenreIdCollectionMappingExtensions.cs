@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpressProject.TMDBWrapper
+namespace ExpressProject.TMDBWrapper.ApiRequest.Genres
 {
     internal static class GenreIdCollectionMappingExtensions
     {

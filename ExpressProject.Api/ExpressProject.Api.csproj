@@ -120,7 +120,7 @@
     </Compile>
     <Compile Include="Models\MoviesInfoViewModel.cs" />
     <Compile Include="Models\MoviesViewModel.cs" />
-    <Compile Include="Models\PagesInfoViewModel.cs" />
+    <Compile Include="Models\PagesInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
