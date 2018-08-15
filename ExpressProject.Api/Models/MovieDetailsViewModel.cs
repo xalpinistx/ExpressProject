@@ -6,13 +6,15 @@ using System.Web;
 
 namespace ExpressProject.Api.Models
 {
-    public class MoviesInfoViewModel : PagesInfo
+    public class MovieDetailsViewModel
     {
         public IReadOnlyList<string> PosterSizes { get; set; }
         public IReadOnlyList<string> LogoSizes { get; set; }
         public IReadOnlyList<string> ProfileSizes { get; set; }
-        public IReadOnlyList<string> BackdropSizes { get; set; }
+        public IReadOnlyList<string> BackDropSizes { get; set; }
 
-        public List<MovieInfo> Movies { get; set; }
+        public MovieCredit MovieCredit { get; set; }
+
+        public Movie Movie { get; set; }
     }
 }

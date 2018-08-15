@@ -48,8 +48,12 @@ const Movie = ({ index, movie, posterUrls }) => {
             size={40}
             labels
             data={[
-              { key: '', value: 100, color: "#aaac84" },
-              { key: `${vote_average}`, value: vote_average * 10, color: "#e3a51a" }
+              { key: "", value: 100, color: "#aaac84" },
+              {
+                key: `${vote_average}`,
+                value: vote_average * 10,
+                color: "#e3a51a"
+              }
             ]}
             styles={{
               ".chart_text": {
@@ -60,7 +64,7 @@ const Movie = ({ index, movie, posterUrls }) => {
           />
         </div>
       </div>
-      <p className="main-movies__desc">{overview}</p>
+      {/* <p className="main-movies__desc">{overview}</p> */}
     </div>
   );
 };

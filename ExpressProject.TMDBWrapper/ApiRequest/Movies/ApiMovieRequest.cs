@@ -52,6 +52,15 @@ namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
             return images;
         }
 
+        public async Task<IReadOnlyList<string>> GetAllBackDropSizesAsync()
+        {
+            var config = await GetConfigurationAsync(_settings);
+
+            IReadOnlyList<string> images = config.Images.BackDrops.Select(imageSize => { imageSize = config.Images.SecureRootUrl + imageSize; return imageSize; }).ToList();
+
+            return images;
+        }
+
         public async Task<ApiQueryResponse<Movie>> FindByIdAsync(int movieId, string language = "en")
         {
             var param = new Dictionary<string, string>

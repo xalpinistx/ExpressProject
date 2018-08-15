@@ -12,6 +12,8 @@ namespace ExpressProject.Service.Interfaces
 
         Task<IReadOnlyList<string>> SearchAllMovieProfileSizesAsync();
 
+        Task<IReadOnlyList<string>> SearchAllBackDropSizesAsync();
+
         Task<ApiQueryResponse<Movie>> FindByIdAsync(int movieId, string language = "en");
 
         Task<ApiSearchResponse<MovieInfo>> SearchByTitleAsync(string query, int pageNumber = 1, string language = "en");
