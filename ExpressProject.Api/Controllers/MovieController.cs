@@ -129,17 +129,28 @@ namespace ExpressProject.Api.Controllers
         /// <returns>movie or error with message.</returns>
         /// 
         [HttpGet]
-        [Route("getMovieById")]
+        [Route("getMovieById/{movieId}")]
         public async Task<HttpResponseMessage> GetMovieByIdAsync(int movieId)
         {
             var movie = await _movieApiService.FindByIdAsync(movieId);
+            var movieCredits = await _movieApiService.SearchCreditsAsync(movieId);
             var posterSizes = await _movieApiService.SearchAllPosterSizesAsync();
             var profileSizes = await _movieApiService.SearchAllMovieProfileSizesAsync();
+            var backDropSizes = await _movieApiService.SearchAllBackDropSizesAsync();
 
             if (movie.Error == null)
             {
-                movie.Item.PosterPath = posterSizes.Last() + movie.Item.PosterPath;
-                return Request.CreateResponse(HttpStatusCode.OK, movie.Item);
+                //movie.Item.PosterPath = posterSizes.Last() + movie.Item.PosterPath;
+                MovieDetailsViewModel movieDetailsModel = new MovieDetailsViewModel()
+                {
+                    Movie = movie.Item,
+                    MovieCredit = movieCredits.Item,
+                    PosterSizes = posterSizes,
+                    ProfileSizes = profileSizes,
+                    BackDropSizes = backDropSizes
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, movieDetailsModel);
             }
             else
             {

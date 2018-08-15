@@ -1,0 +1,152 @@
+@import "./base_styles/constants.scss";
+
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4rem;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.movie-details {
+  @include flex-container;
+  color: $mc-white;
+  height: 100%; 
+  position: relative;
+
+  &__background-wrapper {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+  }
+
+  &__section {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    margin: 0 0.5rem 0 0.5rem;
+  }
+
+  &__title {
+    display: flex;
+    align-items: flex-end;
+    flex: 1 0 1200px;
+    max-width: 1200px;
+    font-size: larger;
+    margin-bottom: 0.25rem;
+  }
+
+  &__movie-title {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  &__movie-title.space {
+    margin-right: .25rem;
+  }
+
+  &__movie-title.font-style {
+    font-weight: 400;
+    font-style: oblique;
+  }
+
+  &__original-title {
+    display: flex;
+    align-items: flex-end;
+    opacity: 0.6;
+    font-size: x-small;
+  }
+
+  &__movie-date {
+    opacity: 0.6;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  &__poster {
+    width: 300px;
+    height: 450px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    border-radius: 4px;
+  }
+
+  &__item-img {
+    width: 300px;
+    height: 450px;
+  }
+
+  &__desc {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: center;
+    padding-left: 2.5rem;
+    font-weight: 400;
+    font-size: large;
+  }
+
+  &__movie-info {
+    margin-top: 5.5rem;
+  }
+
+  &__movie-overview {
+      margin-top: 8px;
+  }
+
+  &__featured {
+    margin-top: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  &__crew {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    font-size: smaller;
+
+    &__member {
+      width: 33%;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__font-bold {
+    font-weight: bold;
+    font-size: 1.03rem;
+  }
+
+  &__item-link {
+    color: $mc-white;
+  }
+
+  &__movie-handlers {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 1.5rem 0 0 0;
+    padding: 0;
+  }
+
+  &__chart {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__score {
+    position: absolute;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 23px;
+  }
+
+  &__score-number {
+    //padding: 
+  }
+}

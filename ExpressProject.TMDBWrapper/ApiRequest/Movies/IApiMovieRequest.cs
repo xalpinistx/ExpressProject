@@ -18,10 +18,16 @@ namespace ExpressProject.TMDBWrapper.ApiRequest.Movies
         Task<IReadOnlyList<string>> GetAllMoviePosterSizesAsync();
 
         /// <summary>
-        /// Gets all urls to cast or crew member profile sizes
+        /// Gets all urls to cast or crew member profile sizes.
         /// </summary>
-        /// <returns>List of orls with rofile sizes</returns>
+        /// <returns>List of urls with rofile sizes.</returns>
         Task<IReadOnlyList<string>> GetAllMovieProfileSizesAsync();
+
+        /// <summary>
+        /// Gets all urls to backdrop sizes.
+        /// </summary>
+        /// <returns>List of urls with backdrop sizes</returns>
+        Task<IReadOnlyList<string>> GetAllBackDropSizesAsync();
 
         /// <summary>
         /// Gets all the information about a specific Movie.

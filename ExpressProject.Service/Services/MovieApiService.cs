@@ -34,6 +34,13 @@ namespace ExpressProject.Service.Services
             return images;
         }
 
+        public async Task<IReadOnlyList<string>> SearchAllBackDropSizesAsync()
+        {
+            var images = await _movieApi.GetAllBackDropSizesAsync();
+
+            return images;
+        }
+
         public async Task<ApiQueryResponse<Movie>> FindByIdAsync(int movieId, string language = "en")
         {
             ApiQueryResponse<Movie> response = await _movieApi.FindByIdAsync(movieId, language);
