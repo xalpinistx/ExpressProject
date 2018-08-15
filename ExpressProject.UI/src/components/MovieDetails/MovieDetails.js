@@ -122,7 +122,7 @@ class MovieDetails extends React.Component {
                             {
                               key: "",
                               value: 100 - vote_average * 10,
-                              color: "#081c24"
+                              color: "transparent"
                             }
                           ]}
                           styles={{
